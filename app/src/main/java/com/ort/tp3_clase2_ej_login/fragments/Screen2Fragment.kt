@@ -70,10 +70,9 @@ class Screen2Fragment : Fragment() {
            }*/
 
 
-            if(editTextEmail.text.isEmpty() &&
-                editTextName.text.isEmpty() &&
+            if(editTextEmail.text.isEmpty() ||
+                editTextName.text.isEmpty() ||
                 editTextPassword.text.isEmpty()){
-
                 Snackbar.make(v, "campos vacíos", Snackbar.LENGTH_SHORT).show()
                 // mosrtar una notificación
             } else if(!existeUsuario(editTextEmail.text.toString())){
