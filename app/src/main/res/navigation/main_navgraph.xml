@@ -25,7 +25,12 @@
     </fragment>
     <fragment
         android:id="@+id/wolcomeFragment"
-        android:name="com.ort.tp3_clase2_ej_login.fragments.wolcomeFragment"
+        android:name="com.ort.tp3_clase2_ej_login.fragments.WelcomeFragment"
         android:label="fragment_wolcome"
-        tools:layout="@layout/fragment_wolcome" />
+        tools:layout="@layout/fragment_wolcome" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="userName" />
+    </fragment>
 </navigation>

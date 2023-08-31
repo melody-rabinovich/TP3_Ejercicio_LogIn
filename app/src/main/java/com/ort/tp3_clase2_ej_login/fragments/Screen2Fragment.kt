@@ -15,7 +15,6 @@ import com.ort.tp3_clase2_ej_login.entities.User
 
 class Screen2Fragment : Fragment() {
 
-
     lateinit var v : View;
     lateinit var btnLogIn : Button;
     lateinit var editTextName : EditText;
@@ -55,20 +54,8 @@ class Screen2Fragment : Fragment() {
         super.onStart()
 
         btnLogIn.setOnClickListener {
-            val action = Screen2FragmentDirections.actionScreen2FragmentToWolcomeFragment();
-
-            /*if(!existeUsuario(editTextEmail.text.toString())){
-                Snackbar.make(v, "el usuario no existe", Snackbar.LENGTH_SHORT).show()
-            } else if (editTextEmail.text.isEmpty() &&
-               editTextName.text.isEmpty() &&
-               editTextPassword.text.isEmpty()){
-                Snackbar.make(v, "campos vacíos", Snackbar.LENGTH_SHORT).show()
-                // mosrtar una notificación
-           } else if(){
-                // la manda para la siguiente pantalla
-                findNavController().navigate(action);
-           }*/
-
+            val action = Screen2FragmentDirections.actionScreen2FragmentToWolcomeFragment(editTextName.text.toString());
+                                                                                        // pasa argumento a la siguiente panatlla
 
             if(editTextEmail.text.isEmpty() ||
                 editTextName.text.isEmpty() ||
