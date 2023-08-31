@@ -57,18 +57,32 @@ class Screen2Fragment : Fragment() {
         btnLogIn.setOnClickListener {
             val action = Screen2FragmentDirections.actionScreen2FragmentToWolcomeFragment();
 
-            if(existeUsuario(editTextEmail.text.toString())){
-                Snackbar.make(v, "el usuario ya existe", Snackbar.LENGTH_SHORT).show()
+            /*if(!existeUsuario(editTextEmail.text.toString())){
+                Snackbar.make(v, "el usuario no existe", Snackbar.LENGTH_SHORT).show()
             } else if (editTextEmail.text.isEmpty() &&
                editTextName.text.isEmpty() &&
                editTextPassword.text.isEmpty()){
                 Snackbar.make(v, "campos vacíos", Snackbar.LENGTH_SHORT).show()
                 // mosrtar una notificación
-           } else{
+           } else if(){
                 // la manda para la siguiente pantalla
                 findNavController().navigate(action);
+           }*/
 
-           }
+
+            if(editTextEmail.text.isEmpty() &&
+                editTextName.text.isEmpty() &&
+                editTextPassword.text.isEmpty()){
+
+                Snackbar.make(v, "campos vacíos", Snackbar.LENGTH_SHORT).show()
+                // mosrtar una notificación
+            } else if(!existeUsuario(editTextEmail.text.toString())){
+                Snackbar.make(v, "el usuario no existe", Snackbar.LENGTH_SHORT).show()
+            } else if(!mismaContraseña(editTextPassword.text.toString())){
+                Snackbar.make(v, "contraseña incorrecta", Snackbar.LENGTH_SHORT).show()
+            }else{
+                findNavController().navigate(action);
+            }
 
         }
 
@@ -90,6 +104,17 @@ class Screen2Fragment : Fragment() {
 
         }
         return existe;
+    }
+
+    fun mismaContraseña(contraseña : String) : Boolean{
+        var misma : Boolean = false;
+        val usuarioEncontrado = usuarios.find { it.email == editTextEmail.text.toString() }
+        if (usuarioEncontrado != null) {
+            if( usuarioEncontrado.password == contraseña){
+                misma = true;
+            }
+        }
+        return misma;
     }
 
 }
